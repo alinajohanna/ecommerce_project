@@ -1,4 +1,6 @@
-# Mid Project Week | Exploratory Data Analysis on Global Plastic Pollution
+# Customer Segmentation and Customer Value Prediction
+
+![Picture](https://d1eipm3vz40hy0.cloudfront.net/images/AMER/customersegmentation.jpg)
 
 ## Problem definition:
 
