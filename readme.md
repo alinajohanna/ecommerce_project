@@ -24,16 +24,6 @@ The overarching purpose of this project is to:
 
 ## Data Sources
 
-Most datasets used for this analysis are sourced from [OECD's Global Plastic Outlook](https://console.cloud.google.com/marketplace/product/bigquery-public-data/thelook-ecommerce?hl=de&project=prime-poetry-400408). 
-Additionally, 2010 data from [World Bank](https://ourworldindata.org/grapher/per-capita-plastic-waste-vs-gdp-per-capita) was added as this provides GDP per capita data for more context.
-
-The raw datasets are stored in the `data/raw_data` folder of this repository.
-
-The cleaned and joined data sets can be found within the `data/cleaned_data`folder.
-
-The cleaned files are the basis for the conducted exploratory data analysis.
-The corresponding jupyter notebooks are stored.
-
 The dataset used for this analysis is from a fictitious eCommerce clothin sited developed by the Looker team and hsoted on [Google BigQuery](https://console.cloud.google.com/marketplace/product/bigquery-public-data/thelook-ecommerce?hl=de&project=prime-poetry-400408)  
 It's encompassing information on customer transactions, registration dates, and other relevant features.
 
@@ -70,7 +60,6 @@ Initial analysis and exploration have revealed several noteworthy aspects:
    - Understanding these correlations can inform marketing strategies for different customer segments.
 
 
-
 ## Instructions
 
 
@@ -89,3 +78,6 @@ Based on the preliminary findings, the project's next steps include:
 - Integration of insights into marketing and business strategies.
 - Collaboration with marketing teams to implement targeted campaigns based on customer segments.
 - Continuous monitoring and evaluation of the model's performance.
+
+
+Picture derived from [Zendesk Blog](https://www.zendesk.com/blog/customer-segmentation/)
