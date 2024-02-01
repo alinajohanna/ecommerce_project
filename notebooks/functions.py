@@ -17,8 +17,8 @@ import pickle
 def customer_clusters(df: pd.DataFrame, recency= 'recency', frequency= 'frequency', monetary= 'monetary', k= 3):
     """
     Input data frame with RFM-alike columns that will be used for clustering.
-    Function scales variables and performs a KMeans Clustering with k=3 default.
-    Returns df with appended Kmeans Clusters.
+    Scales variables and performs a K-Means Clustering with k=3 as default.
+    Returns a df with generated K-means Clusters.
     """
 
     X = df[[recency, frequency, monetary]]
@@ -44,7 +44,11 @@ def customer_clusters(df: pd.DataFrame, recency= 'recency', frequency= 'frequenc
 
 def customer_info_for_timeframe(df, start= '2023-01-01', end= '2023-06-30'):
     """
-    Filters given dataframe on given timeframe and returns new customers_with_orders info csv.
+
+    Filters given dataframe on given timeframe and returns new customers_with_orders additional columns.
+    Input: DataFrame, Start Date, and End Date
+    Output: Customer-Centric df with additional columns
+
     """
     
     # first creating users with orders df:
@@ -84,13 +88,15 @@ def customer_info_for_timeframe(df, start= '2023-01-01', end= '2023-06-30'):
         
     return new_df
 
-def error_metrics(model: str, X_train: str, X_test: str):
-    """Generate error metrics report based on predictions of the model
+def error_metrics(y_train_pred: str, y_test_pred: str):
     """
-    # Make predictions on the training and test sets
-    y_train_pred = model.predict(X_train)
-    y_test_pred = model.predict(X_test)
-    
+    Generates an error metrics report based on predictions of the model.
+
+    Input: y_train_pred and y_test_pred of your model
+    Output: Error Metrics Report
+
+    """
+   
     # Evaluate the model
     mae_train = mean_absolute_error(y_train, y_train_pred)
     mae_test = mean_absolute_error(y_test, y_test_pred)

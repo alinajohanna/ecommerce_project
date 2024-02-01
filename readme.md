@@ -24,10 +24,21 @@ The overarching purpose of this project is to:
 
 ## Data Sources
 
-The dataset used for this analysis is from a fictitious eCommerce clothin sited developed by the Looker team and hsoted on [Google BigQuery](https://console.cloud.google.com/marketplace/product/bigquery-public-data/thelook-ecommerce?hl=de&project=prime-poetry-400408)  
+The dataset used for this analysis is from a fictitious eCommerce clothin sited developed by the Looker team and hsoted on [Google BigQuery](https://console.cloud.google.com/marketplace/product/bigquery-public-data/thelook-ecommerce?hl=de&project=prime-poetry-400408).  
 It's encompassing information on customer transactions, registration dates, and other relevant features.
 
 The raw dataset is stored in the `data/raw` folder of this repository and is based on a predefined SQL query.
+
+(SELECT 
+   u.id AS user_id, u.first_name, u.last_name, u.age, u.gender, u.state, u.street_address, u.postal_code,
+   u.city, u.country, u.created_at AS registered_on, u.traffic_source AS user_traffic_source, o.order_id, o.status AS order_status, o.created_at AS order_created_at, o.num_of_item, SUM(oi.sale_price) AS revenue
+FROM `bigquery-public-data.thelook_ecommerce.users` u
+LEFT JOIN `bigquery-public-data.thelook_ecommerce.orders` o ON u.id = o.user_id
+LEFT JOIN `bigquery-public-data.thelook_ecommerce.order_items` oi ON u.id = oi.user_id
+WHERE  u.country IN ('France', 'United Kingdom', 'Germany', 'Spain', 'Belgium', 'Poland', 'Austria', 'España')
+GROUP BY 
+   u.id AS user_id, u.first_name, u.last_name, u.age, u.gender, u.state, u.street_address, u.postal_code,
+   u.city, u.country, u.created_at, u.traffic_source, o.order_id, o.status, o.created_at, o.num_of_item; )
 
 The cleaned and processed data sets can be found within the `data/cleaned` folder.
 
@@ -50,6 +61,10 @@ Initial analysis and exploration have revealed several noteworthy aspects:
 1. Customer Segmentation:
    - Segmentation based on recency, frequency, and monetary value reveals distinct customer groups.
    - High-value customers exhibit different behavior compared to low-value or occasional shoppers.
+   - Three customer segments have been determined:
+      1. Active Customers: spend relatively higher amounts and have made multiple recent purchases
+      2. Casual Customers: recently made purchases but spent an average to low amount
+      3. Quiet Customers: haven't made a purchase in quite a while and have low to average spending
 
 2. Customer Value Prediction:
    - Utilizing machine learning models, we can predict individual customer value with a reasonable degree of accuracy.
